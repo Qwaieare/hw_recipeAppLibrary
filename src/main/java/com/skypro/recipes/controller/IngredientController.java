@@ -28,12 +28,20 @@ public class IngredientController {
 
 
     @GetMapping("/getingredient")
+    @Operation(
+            summary = "Получить ингредиент по id",
+            description = "Получить ингредиент по id"
+    )
     public Ingredient getIngredient(@RequestParam Long idIng) {
           return ingredientService.getIngredient(idIng);
     }
 
 
     @GetMapping("/addingredient")
+    @Operation(
+            summary = "Добавить ингредиенты",
+            description = "Добавить ингредиенты"
+    )
     public Ingredient addNewIngredient(@RequestParam Ingredient ingredient) {
         return ingredientService.addNewIngredient(ingredient);
     }
@@ -77,6 +85,10 @@ public class IngredientController {
         return ResponseEntity.ok(ingredient);
     }
     @DeleteMapping
+    @Operation(
+            summary = "Удаление ингредиента",
+            description = "Удаление ингредиента"
+    )
     public ResponseEntity<Void> deleteIngredient(@PathVariable Long idIng) {
         if (ingredientService.deleteIngredient(idIng)) {
             return ResponseEntity.ok().build();

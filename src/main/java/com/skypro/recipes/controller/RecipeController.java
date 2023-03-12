@@ -27,11 +27,20 @@ public class RecipeController {
     }
 
     @GetMapping("/getrecipe")
+    @Operation(
+            summary = "Получение рецепта по id",
+            description = "Получение рецепта по id"
+
+    )
    public Recipe getRecipe(@RequestParam Long idRec) {
         return recipeService.getRecipe(idRec);
     }
 
     @GetMapping("/addrecipe")
+    @Operation(
+            summary = "Добавить рецепт",
+            description = "Добавить рецепт"
+    )
     public void addNewRecipe(@RequestParam Recipe recipe) {
         recipeService.addNewRecipe(recipe);
     }
@@ -78,6 +87,10 @@ public class RecipeController {
     }
 
     @DeleteMapping("/idRec")
+    @Operation(
+            summary = "Удалить рецепт",
+            description = "Удалить рецепт"
+    )
     public ResponseEntity<Void> deleteRecipe(@PathVariable Long idRec) {
         if (recipeService.deleteRecipe(idRec)) {
             return ResponseEntity.ok().build();
